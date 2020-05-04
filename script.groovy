@@ -38,10 +38,13 @@ def changes = new StringWriter()
 
 cfiles.each{file -> 
 	println("File que cambio -> " + file)
-    ruta = new File(file);
-    ruta.createNewFile();
-    ruta = file;
+    def ruta = new File(file);
+    text = ruta.getText('UTF-8')
+    ruta.write (text)
+    //ruta.createNewFile()
+    
+    println("ruta -> " + ruta)
+    outProps.put("buildlife/rutaDefinition",ruta)
 }
-def dir = ruta;
-println("Dir = " + dir)
-outProps.put("buildlife/rutaDefinition",ruta)
+//def dir = ruta;
+//println("Dir = " + dir)
